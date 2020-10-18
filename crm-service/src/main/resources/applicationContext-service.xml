@@ -2,14 +2,32 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <context:component-scan base-package="cn.javasm.test"/>
+    <context:component-scan base-package="cn.javasm.service"/>
+    <!--<bean class="com.baomidou.mybatisplus.extension.service.impl.ServiceImpl"/>-->
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
     <tx:annotation-driven/>
+
+    <!--<tx:advice transaction-manager="transactionManager" id="myAdvice">-->
+        <!--<tx:attributes>-->
+            <!--<tx:method name="get*"/>-->
+            <!--<tx:method name="select*"/>-->
+            <!--<tx:method name="remove*"/>-->
+            <!--<tx:method name="update*"/>-->
+            <!--<tx:method name="delete*"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+
+    <!--<aop:config>-->
+        <!--<aop:advisor advice-ref="myAdvice"-->
+                     <!--pointcut="execution(* com.baomidou.mybatisplus.extension.service.impl.*.*(..))"/>-->
+    <!--</aop:config>-->
+
 
 </beans>

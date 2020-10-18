@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class DemoTest {
 
 
-
     @Test
     public void doTest(){
 
