@@ -53,7 +53,7 @@ public class BaseGoodController {
     }
 
     @GetMapping("{id}")
-    public AjaxResult fingById(@PathVariable Serializable id) {
+    public AjaxResult findById(@PathVariable Serializable id) {
         return AjaxResult.success(iBaseGoodService.findById(id));
     }
 
