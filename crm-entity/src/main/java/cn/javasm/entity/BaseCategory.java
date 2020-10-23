@@ -37,5 +37,7 @@ public class BaseCategory implements Serializable {
      */
     private Integer pId;
 
+    private transient String pName;
+
 
 }

@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author Cang
@@ -35,7 +35,16 @@ public class BaseCategoryServiceImpl implements IBaseCategoryService {
 
     @Override
     public IPage<BaseCategory> pageList(IPage<BaseCategory> page) {
-        return baseCategoryMapper.selectPage(page, null);
+        IPage<BaseCategory> baseCategoryIPage = baseCategoryMapper.selectPage(page, null);
+        baseCategoryIPage.getRecords().forEach(item -> {
+            Integer pId = item.getPId();
+            if (pId.equals(0)){
+                item.setPName("一级分类");
+            }else {
+                item.setPName(this.findById(pId).getName());
+            }
+        });
+        return baseCategoryIPage;
     }
 
     @Override
