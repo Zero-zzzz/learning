@@ -21,7 +21,7 @@ import java.io.Serializable;
  * @since 2020-10-17
  */
 @RestController
-@RequestMapping("base-unit")
+@RequestMapping("unit")
 public class BaseUnitController {
 
 
